@@ -1,6 +1,6 @@
-# Text\_Similarity
+# Text\_Matching
 
-## 文本相似度算法
+## 文本匹配算法
 
 ### Lexical级别
 
