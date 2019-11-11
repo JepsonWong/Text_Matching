@@ -1,6 +1,6 @@
 # Text\_Matching（文本匹配算法）
 
-## 词汇（Lexical）层面
+## 1. 词汇（Lexical）层面
 
 解决词汇层面的匹配问题，或者说词汇层面的相似度问题。
 
@@ -12,7 +12,7 @@
 
 这表明，对文本匹配任务，**不能只停留在字面匹配层面，更需要语义层面的匹配，不仅是相似度匹配，还包括更广泛意义上的匹配**。
 
-### 向量空间模型（VSM）
+### 1.1 向量空间模型（VSM）
 
 向量化
 
@@ -54,7 +54,7 @@ TF（不宜根据词频大幅度删词）、DF（根据预先设置阈值去除�
 
 计算某个特征全局的Chi值，选择Chi值较大的特征。
 
-### BM25
+### 1.2 BM25
 
 计算查询和文档之间的相关性。对查询的分词进行语素分析，每个词看成语素Qi；D表示一个结果文档，Wi表示语素Qi的权重。计算语素Qi和与文档D的相关性得分。Wi的计算：较常用的是IDF。
 
@@ -62,7 +62,7 @@ TF（不宜根据词频大幅度删词）、DF（根据预先设置阈值去除�
 
 综合来看，BM25考虑了4个因素：IDF因子、文档长度因子、文档词频因子和查询词频因子。
 
-## 语义层面
+## 2. 语义层面
 
 语义如何表示？语义如何计算？
 
@@ -70,37 +70,80 @@ TF（不宜根据词频大幅度删词）、DF（根据预先设置阈值去除�
 
 矩阵分解 -> 主题模型 -> 深度学习
 
-### 矩阵分解
+### 2.1 矩阵分解
 
 潜在语义分析技术（Latent Semantic Analysis，LSA），开辟了一个新思路，将**词句映射到等长的低维连续空间**，可在此隐式的潜在语义空间上进行相似度计算。
 
-### 主题模型
+### 2.2 主题模型
 
 之后**PLSA**（Probabilistic Latent Semantic Analysis）、**LDA**（Latent Dirichlet Allocation）等更高级的概率模型被设计出来，逐渐形成非常火热的主题模型技术方向。
 
 这些技术对文本的语义**表示形式简洁、运算方便**，较好的弥补了传统词汇匹配方法的不足。不过从效果上来看，这些技术都**无法替代**字面匹配技术，只能**作为字面匹配的有效补充**。
 
-### 基于语义相似度的文本相似度算法
+### 2.3 基于语义相似度的文本相似度算法
 
 语义相关度计算获得相似度矩阵的方向有两个：基于知网HowNet或者基于WordNet。
 
 [文本相似度算法](https://www.cnblogs.com/liangxiaxu/archive/2012/05/05/2484972.html)
 
-### Word Embedding
+### 2.4 Word Embedding
 
 深度学习技术兴起后，基于神经网络训练出的**Word Embedding**来进行文本匹配计算引起了广泛的兴趣。Word Embedding的训练方式更加简洁，而且所得的词语向量表示的语义可计算性进一步加强。但是，只利用无标注数据训练得到的Word Embedding在匹配度计算的**实用效果上和主题模型技术相差不大**，它们**本质**上都是**基于共现信息的训练**。另外，Word Embedding本身**没有解决短语、句子的语义表示问题**，也**没有解决匹配的非对称性问题**。
 
-### SimNet
+### 2.5 SimNet
 
 百度2013年设计研发。
 
 SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语义匹配问题在深度学习框架下进行了End-to-End的建模，将**词语的Embedding表示**与**句篇的语义表示**、**语义的向量表示**与**匹配度计算**、**文本对的匹配度计算**与**pair-wise的有监督学习**全部统一在一个整体框架内。
 
-### 其他模型
+### 2.6 其他模型
 
 学术界相关的研究也逐渐增多。像Microsoft Research提出的**DSSM**模型（Deep Structured Semantic Model）即和**SimNet**初版在模型框架上非常类似，只是在训练手段上有所区别。华为NOAH'S ARK LAB也提出了一些新的**神经网络匹配模型变体**，如**基于二维交互匹配的卷积匹配模型**。中科院等研究机构也提出了诸如**多视角循环神经网络匹配模型**（MV-LSTM）、**基于矩阵匹配的的层次化匹配模型**MatchPyramid等更加精致的神经网络文本匹配模型。
 
+## 3. 模型实现
+
+模型分类标准：
+* 特征提取
+* **representation learning**（先生成文本的表示，再计算匹配度）、**interaction based**（直接计算匹配特征，第一是关键字的匹配，第二是相对位置，同时考虑匹配度和匹配的结构）
+* representation-based和interaction-based方法的融合
+
+* SiameseCNN/SiameseLSTM/Learning Text Similarity with Siamese Recurrent Networks/Siamese Recurrent Architectures for Learning Sentence Similarity
+* **DSSM**(Deep Structured Semantic Models)(Learning deep structured semantic models for web search using clickthrough data 2013)(**Representation based**)/**CNN-DSSM**(CLSM)(convolutional latent semantic model)(A latent semantic model with convolutional-pooling structure for information retrieval 2014)(**Representation based**)/**LSTM-DSSM**(Semantic modelling with long-short-term memory for information retrieval 2014)
+* SiameseCNN(**Representation based**)/SiameseLSTM(**Representation based**)/InferSent(Supervised Learning of Universal Sentence Representations from Natural Language Inference Data EMNLP 2017)(**Representation based** 生成文本的表示)/SSE(Shortcut-Stacked Sentence Encoders for Multi-Domain Inference EMNLP 2017)(**Representation based** 生成文本的表示的改进)/LSF-SCNN(**Representation based**)
+* SiamCNN(Applying deep learning to answer selection: A study and an open task ASRU 2015)(**Representation based** 计算匹配度的改进)/SiamLSTM(Siamese Recurrent Architectures for Learning Sentence Similarity AAAI 2016)(**Representation based** 计算匹配度的改进)/Multi-view(Multi-view Response Selection for Human-Computer Conversation EMNLP 2016)(**Representation based** 计算匹配度的改进)
+* Convolutional neural network architectures for matching natural language sentences(NIPS 2014)(**interaction based**)/**MatchPyramid**(Text Matching as Image Recognition AAAI 2016)(**interaction based**)/DRMM(A deep relevance matching model for ad-hoc retrieval CIKM 2016)(**interaction based**)/KNRM(End-to-end neural ad-hoc ranking with kernel pooling SIGIR 2017)(**interaction based**)/Conv-KNRM(Convolutional Neural Networks for Soft-Matching N-Grams in Ad-hoc Search WSDM 2018)(**interaction based**)/DecAtt(A Decomposable Attention Model for Natural Language Inference EMNLP 2016)(**interaction based**)/CompAgg(A COMPARE-AGGREGATE MODEL FOR MATCHING TEXT SEQUENCES ICLR 2017)(**interaction based**)/ESIM(Enhanced LSTM for Natural Language Inference ACL 2017)(**interaction based**)/BiMPM(Bilateral multi-perspective matching for natural language sentences IJCAI)(**interaction based**)/DAM(Multi-Turn Response Selection for Chatbots with Deep Attention Matching Network ACL 2018)(**interaction based**)/HCAN(Bridging the Gap between Relevance Matching and Semantic Matching for Short Text Similarity Modeling EMNLP 2019)(**interaction based**)
+* MP-CNN(Multi-Perspective Sentence Similarity Modeling with Convolutional Neural Network)
+* MIX(MIX: Multi-Channel Information Crossing for Text Matching KDD 2018 腾讯)
+* Neural Network Models for Paraphrase Identification, Semantic Textual Similarity, Natural Language Inference, and Question Answering COLING 2018 (综述文)
+* CNM: An Interpretable Complex-valued Network for Matching NAACL 2019 最佳可解释NLP论文
+* Multi-Turn Response Selection for Chatbots with Deep Attention Matching Network ACL 2018 检索式多轮对话系统 https://blog.csdn.net/zhucuankuan2669/article/details/83002423
+* MatchPyramid(**interaction based**)/MV-LSTM(**interaction based**)/K-NRM(**interaction based**)/MM-DNN(**interaction based**)
+* Multi-Perspective Sentence Similarity Modeling with Convolution Neural Networks https://blog.csdn.net/liuchonge/article/details/62424805 https://blog.csdn.net/liuchonge/article/details/64440110 https://blog.csdn.net/liuchonge/article/details/64128870
+* A Compare-Aggregate Model for Matching Text Sequences
+* Improved Representation Learning for Question Answer Matching
+* Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks
+* Improved Representation Learning for Question Answer Matching
+* A Compare-Aggregate Model for Matching Text Sequences ICLR 2017 
+
 ## 参考
+
+[Text-Similarity Method Implemented by Pytorch ESIM/SiaGRU/ABCNN/BiMPM github](https://github.com/pengshuang/Text-Similarity)
+
+[基于MP-CNN的中文句子相似度计算 github](https://github.com/ATEC2018/mpcnn-text-similarity)
+
+[基于siamese-lstm的中文句子相似度计算 github](https://github.com/ATEC2018/deep-siamese-text-similarity)
+
+[基于神经网络模型的释义识别、语义文本相似性、自然语言推理和问题回答](https://blog.csdn.net/u010859324/article/details/80746491)
+
+[LSF-SCNN：一种基于 CNN 的短文本表达模型及相似度计算的全新优化模型](https://www.cnblogs.com/qcloud1001/p/7910255.html)
+
+[论文笔记：BiMPM 阅读和实现 (PyTorch)](https://zhuanlan.zhihu.com/p/50184415)
+
+[文本匹配相关方向打卡点总结](https://www.jiqizhixin.com/articles/2019-10-18-14)
+
+[KDD2018，短文本匹配：MIX](https://www.jianshu.com/p/9c2e35f9ff53)
+
+[搜索之BM25和BM25F模型（没看）](https://www.cnblogs.com/liguangsunls/p/6722444.html)
 
 [维基百科语料中的词语相似度探索](http://www.52nlp.cn/%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E8%AF%AD%E6%96%99%E4%B8%AD%E7%9A%84%E8%AF%8D%E8%AF%AD%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%8E%A2%E7%B4%A2)
 
