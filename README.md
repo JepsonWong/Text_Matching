@@ -121,7 +121,7 @@ SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语�
   * 基本模型：
     * SiameseCNN
     * SiameseLSTM
-    * Learning Text Similarity with Siamese Recurrent Networks
+    * Learning Text Similarity with Siamese Recurrent Networks, 2016
     * Siamese Recurrent Architectures for Learning Sentence Similarity
     * LSF-SCN
   * 改进编码器：
