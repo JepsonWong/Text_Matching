@@ -121,9 +121,10 @@ SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语�
   * 基本模型：
     * SiameseCNN
     * SiameseLSTM
-    * Learning Text Similarity with Siamese Recurrent Networks, 2016
+    * Learning Text Similarity with Siamese Recurrent Networks, 2016 (**done**)
     * Siamese Recurrent Architectures for Learning Sentence Similarity
     * LSF-SCN
+    * LSTM-RNN(Deep Sentence Embedding Using the Long Short Term MemoryNetwork:Analysis and Application toInformation Retrieval, TASLP 2016)
   * 改进编码器：
     * InferSent(Supervised Learning of Universal Sentence Representations from Natural Language Inference Data, EMNLP 2017)
     * SSE(Shortcut-Stacked Sentence Encoders for Multi-Domain Inference, ENLP 2017, 改进编码器)
@@ -131,13 +132,19 @@ SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语�
     * SiamCNN(Applying deep learning to answer selection: A study and an open task, ASRU 2015)
     * SiamLSTM(Siamese Recurrent Architectures for Learning Sentence Similarity, AAAI 2016)
     * Multi-view(Multi-view Response Selection for Human-Computer Conversation, EMNLP 2016)
+  * 改进编码器 + 改进相似度计算结合：
+    * MP-CNN(Multi-Perspective Sentence Similarity Modeling with Convolutional Neural Networks, EMNLP 2015) https://blog.csdn.net/liuchonge/article/details/62424805 https://blog.csdn.net/liuchonge/article/details/64440110 https://blog.csdn.net/liuchonge/article/details/64128870 (**done**)
   * DSSM系列：
     * DSSM(Deep Structured Semantic Models)(Learning deep structured semantic models for web search using clickthrough data, 2013)
     * CNN-DSSM(CLSM)(convolutional latent semantic model)(A latent semantic model with convolutional-pooling structure for information retrieval, 2014)
     * LSTM-DSSM(Semantic modelling with long-short-term memory for information retrieval, 2014)
-* **基于交互的模型(interaction-based)** : 
+* **基于交互的模型(interaction-based)** :
+  * DeepMatch(A Deep Architecture for Matching Short Texts, NIPS 2013) 
   * (Convolutional neural network architectures for matching natural language sentences, NIPS 2014)
+    * ARC-I(representation-based)
+    * ARC-II(interaction-based)
   * MatchPyramid(Text Matching as Image Recognition, AAAI 2016)
+  * Match-SRNN(Modeling the Recursive Matching Structure with Spatial RNN, IJCAI 2016)
   * DRMM(A deep relevance matching model for ad-hoc retrieval, CIKM 2016)
   * DecAtt(A Decomposable Attention Model for Natural Language Inference, EMNLP 2016)
   * KNRM(End-to-end neural ad-hoc ranking with kernel pooling, SIGIR 2017)
@@ -152,11 +159,9 @@ SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语�
   * K-NRM
   * MM-DNN
 * 其他未总结：
-  * MP-CNN(Multi-Perspective Sentence Similarity Modeling with Convolutional Neural Network)
   * MIX(MIX: Multi-Channel Information Crossing for Text Matching, KDD 2018, 腾讯)
   * CNM: An Interpretable Complex-valued Network for Matching, NAACL 2019, 最佳可解释NLP论文
   * Multi-Turn Response Selection for Chatbots with Deep Attention Matching Network ACL 2018 检索式多轮对话系统 https://blog.csdn.net/zhucuankuan2669/article/details/83002423
-  * Multi-Perspective Sentence Similarity Modeling with Convolution Neural Networks https://blog.csdn.net/liuchonge/article/details/62424805 https://blog.csdn.net/liuchonge/article/details/64440110 https://blog.csdn.net/liuchonge/article/details/64128870
   * A Compare-Aggregate Model for Matching Text Sequences
   * Improved Representation Learning for Question Answer Matching
   * Learning to Rank Short Text Pairs with Convolutional Deep Neural Networks
