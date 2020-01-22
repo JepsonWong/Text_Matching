@@ -1,5 +1,7 @@
 # Text\_Matching（文本匹配算法）
 
+文本匹配是自然语言理解中的一个核心问题，它可以应用于大量的自然语言处理任务中，例如信息检索、问答系统、复述问题、对话系统、机器翻译等等。这些自然语言处理任务在很大程度上都可以抽象成文本匹配问题，比如**信息检索可以归结为搜索词和文档资源的匹配，问答系统可以归结为问题和候选答案的匹配，复述问题可以归结为两个同义句的匹配，对话系统可以归结为前一句对话和回复的匹配，机器翻译则可以归结为两种语言的匹配**。
+
 ## 1. 词汇（Lexical）层面
 
 解决词汇层面的匹配问题，或者说词汇层面的相似度问题。
@@ -131,25 +133,28 @@ SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语�
   * 改进相似度计算的方法：
     * SiamCNN(Applying deep learning to answer selection: A study and an open task, ASRU 2015)
     * SiamLSTM(Siamese Recurrent Architectures for Learning Sentence Similarity, AAAI 2016)
-    * Multi-view(Multi-view Response Selection for Human-Computer Conversation, EMNLP 2016)
+    * MV-DSSM/Multi-view(Multi-view Response Selection for Human-Computer Conversation, EMNLP 2016)
   * 改进编码器 + 改进相似度计算结合：
     * MP-CNN(Multi-Perspective Sentence Similarity Modeling with Convolutional Neural Networks, EMNLP 2015) https://blog.csdn.net/liuchonge/article/details/62424805 https://blog.csdn.net/liuchonge/article/details/64440110 https://blog.csdn.net/liuchonge/article/details/64128870 (**done**)
   * DSSM系列：
     * DSSM(Deep Structured Semantic Models)(Learning deep structured semantic models for web search using clickthrough data, 2013)
     * CNN-DSSM(CLSM)(convolutional latent semantic model)(A latent semantic model with convolutional-pooling structure for information retrieval, 2014)
     * LSTM-DSSM(Semantic modelling with long-short-term memory for information retrieval, 2014)
+    * MV-DNN(A Multi-View Deep Learning Approach for Cross Domain User Modeling in Recommendation Systems)
 * **基于交互的模型(interaction-based)** :
   * DeepMatch(A Deep Architecture for Matching Short Texts, NIPS 2013) 
   * (Convolutional neural network architectures for matching natural language sentences, NIPS 2014)
     * ARC-I(representation-based)
-    * ARC-II(interaction-based)
+    * **ARC-II(interaction-based)**
   * MatchPyramid(Text Matching as Image Recognition, AAAI 2016)
   * Match-SRNN(Modeling the Recursive Matching Structure with Spatial RNN, IJCAI 2016)
-  * DRMM(A deep relevance matching model for ad-hoc retrieval, CIKM 2016)
+  * DRMM系列（相关性匹配）
+    * DRMM(A deep relevance matching model for ad-hoc retrieval, CIKM 2016)
+    * Enhanced DRMM(Deep Relevance Ranking Using Enhanced Document-Query Interactions, EMNLP 2018)
   * DecAtt(A Decomposable Attention Model for Natural Language Inference, EMNLP 2016)
   * KNRM(End-to-end neural ad-hoc ranking with kernel pooling, SIGIR 2017)
   * CompAgg(A COMPARE-AGGREGATE MODEL FOR MATCHING TEXT SEQUENCES, ICLR 2017)
-  * ESIM(Enhanced LSTM for Natural Language Inference, ACL 2017)
+  * **ESIM**(Enhanced LSTM for Natural Language Inference, ACL 2017)
   * Conv-KNRM(Convolutional Neural Networks for Soft-Matching N-Grams in Ad-hoc Search, WSDM 2018)
   * BiMPM(Bilateral multi-perspective matching for natural language sentences, IJCAI)
   * DAM(Multi-Turn Response Selection for Chatbots with Deep Attention Matching Network, ACL 2018)
@@ -159,7 +164,9 @@ SimNet 在语义表示上沿袭了隐式连续向量表示的方式，但对语�
   * K-NRM
   * MM-DNN
 * 其他未总结：
-  * MIX(MIX: Multi-Channel Information Crossing for Text Matching, KDD 2018, 腾讯)
+  * **ABCNN**, 2016 IBM
+  * **Tree-LSTM**, 2015
+  * **MIX**(MIX: Multi-Channel Information Crossing for Text Matching, KDD 2018, 腾讯)
   * CNM: An Interpretable Complex-valued Network for Matching, NAACL 2019, 最佳可解释NLP论文
   * Multi-Turn Response Selection for Chatbots with Deep Attention Matching Network ACL 2018 检索式多轮对话系统 https://blog.csdn.net/zhucuankuan2669/article/details/83002423
   * A Compare-Aggregate Model for Matching Text Sequences
