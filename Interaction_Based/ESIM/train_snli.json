@@ -1,0 +1,17 @@
+{
+    "train_data": "./data/dataset/snli_1.0_preprocessed/train_data.pkl",
+    "valid_data": "./data/dataset/snli_1.0_preprocessed/dev_data.pkl",
+    "embeddings": "./data/dataset/snli_1.0_preprocessed/embeddings.pkl",
+
+    "target_dir": "./data/checkpoints/snli_1.0",
+    
+    "hidden_size": 300,
+    "dropout": 0.5,
+    "num_classes": 3,
+
+    "epochs": 64,
+    "batch_size": 32,
+    "lr": 0.0004,
+    "patience": 5,
+    "max_gradient_norm": 10.0
+}

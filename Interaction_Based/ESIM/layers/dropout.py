@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # author: JepsonWong
 
+import torch.nn as nn
+
 class RNNDropout(nn.Dropout):
     """
     Dropout layer for the inputs of RNNs.

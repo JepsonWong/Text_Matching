@@ -129,9 +129,7 @@ if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.realpath(__file__))
 
     if args.config == default_config:
-        print default_config, script_dir
         config_path = os.path.join(script_dir, args.config)
-        print config_path
     else:
         config_path = args.config
 

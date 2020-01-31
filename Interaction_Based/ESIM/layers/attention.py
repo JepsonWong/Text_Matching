@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # author: JepsonWong
 
+import torch.nn as nn
+
 def masked_softmax(tensor, mask):
     """
     Apply a masked softmax on the last dimension of a tensor.

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # author: JepsonWong
 
+import torch
+import torch.nn as nn
+
 def sort_by_seq_lens(batch, sequences_lengths, descending=True):
     """
     Sort a batch of padded variable length sequences by their length.

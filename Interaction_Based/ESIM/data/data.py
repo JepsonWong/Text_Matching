@@ -8,7 +8,6 @@ import numpy as np
 from collections import Counter
 from torch.utils.data import Dataset
 
-
 class Preprocessor(object):
     """
     Preprocessor class for Natural Language Inference datasets.
