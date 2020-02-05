@@ -69,3 +69,6 @@ Avg. batch proc. time: 1.4102s, loss: 0.4401: 100%|█████████�
 
 [ESIM模型介绍](https://zhuanlan.zhihu.com/p/86978155)
 
+[github esim](https://github.com/coetaur0/ESIM)
+
+
